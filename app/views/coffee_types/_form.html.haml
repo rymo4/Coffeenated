@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :name
-    = f.input :roaster_id
+    = collection_select :coffee_type, :roaster_id, Roaster.all, :id, :name
 
   .form-actions
     = f.button :submit
