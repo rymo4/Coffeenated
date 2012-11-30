@@ -44,7 +44,15 @@ class User
   # field :authentication_token, :type => String
   # run 'rake db:mongoid:create_indexes' to create indexes
   index({ email: 1 }, { unique: true, background: true })
-  field :name, :type => String
-  validates_presence_of :name
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
+  field :lastname, type: String
+  field :title, type: String
+  validates_presence_of :lastname
+  validates_presence_of :title
+  attr_accessible :lastname, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :title
+
+  TITLES = %(Mr. Mrs. Ms. Madam Master).split.freeze
+
+  def fullname
+    "#{title} #{lastname}"
+  end
 end
