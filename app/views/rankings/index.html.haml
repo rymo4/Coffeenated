@@ -1,0 +1,19 @@
+%h1 Listing rankings
+
+%table
+  %tr
+    %th Data
+    %th
+    %th
+    %th
+
+  - @rankings.each do |ranking|
+    %tr
+      %td= ranking.data
+      %td= link_to 'Show', ranking
+      %td= link_to 'Edit', edit_ranking_path(ranking)
+      %td= link_to 'Destroy', ranking, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Ranking', new_ranking_path

@@ -52,6 +52,8 @@ class User
 
   TITLES = %(Mr. Mrs. Ms. Madam Master).split.freeze
 
+  has_many :rankings
+
   def fullname
     "#{title} #{lastname}"
   end

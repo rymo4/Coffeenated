@@ -1,5 +1,6 @@
 class CoffeeType
   include Mongoid::Document
   field :name, type: String
-  field :roaster_id, type: Integer
+  belongs_to :roaster
+  has_many :rankings
 end
