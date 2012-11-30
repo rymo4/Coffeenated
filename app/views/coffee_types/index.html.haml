@@ -1,0 +1,21 @@
+%h1 Listing coffee_types
+
+%table
+  %tr
+    %th Name
+    %th Roaster
+    %th
+    %th
+    %th
+
+  - @coffee_types.each do |coffee_type|
+    %tr
+      %td= coffee_type.name
+      %td= coffee_type.roaster_id
+      %td= link_to 'Show', coffee_type
+      %td= link_to 'Edit', edit_coffee_type_path(coffee_type)
+      %td= link_to 'Destroy', coffee_type, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Coffee type', new_coffee_type_path

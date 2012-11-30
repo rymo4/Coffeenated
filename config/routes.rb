@@ -1,4 +1,6 @@
 Coffeenated::Application.routes.draw do
+  resources :coffee_types
+
   authenticated :user do
     root :to => 'home#index'
   end

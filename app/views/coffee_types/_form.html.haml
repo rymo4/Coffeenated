@@ -1,0 +1,9 @@
+= simple_form_for(@coffee_type) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :roaster_id
+
+  .form-actions
+    = f.button :submit

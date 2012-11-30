@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @coffee_type.name
+%p
+  %b Roaster:
+  = @coffee_type.roaster_id
+
+= link_to 'Edit', edit_coffee_type_path(@coffee_type)
+\|
+= link_to 'Back', coffee_types_path
