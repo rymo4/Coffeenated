@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @roaster.name
+
+= link_to 'Edit', edit_roaster_path(@roaster)
+\|
+= link_to 'Back', roasters_path

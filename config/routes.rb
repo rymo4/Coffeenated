@@ -1,4 +1,6 @@
 Coffeenated::Application.routes.draw do
+  resources :roasters
+
   resources :coffee_types
 
   authenticated :user do
