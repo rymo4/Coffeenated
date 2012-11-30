@@ -7,7 +7,10 @@
         = stylesheet_link_tag "application", :media => "all"
         = javascript_include_tag "application"
         = csrf_meta_tags
-        = yield(:head)
+        = yield :head
+      - if current_user
+        :javascript
+          client.store('current_user', #{current_user.to_json});
   %body{:class => "#{controller_name} #{action_name}"}
     %header.navbar.navbar-fixed-top
       %nav.navbar-inner
