@@ -6,6 +6,9 @@ class Ranking
     type: Hash, 
     default: TASTES.each_with_object({}) { |k, h| h[k] = 0 }
 
+  field :notes, type: String
+  field :overall, type: Integer
+
   belongs_to :coffee_type
   belongs_to :user
 

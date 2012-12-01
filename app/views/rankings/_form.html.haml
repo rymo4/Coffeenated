@@ -1,10 +1,18 @@
 = simple_form_for(@ranking) do |f|
   = f.error_notification
-
-  - Ranking::TASTES.each do |taste|
-    .form-inputs
-      = f.label taste
-      = select_tag "ranking[data][#{taste}]", options_for_select((1..10).map { |n| [n, n] })
+  .row-fluid
+    .span6
+      %h3 What did you think?
+      = f.label :overall
+      = f.select :overall, (1..10).to_a, {}, class: 'span2'
+      - Ranking::TASTES.each do |taste|
+        .form-inputs
+          = f.label taste
+          = select_tag "ranking[data][#{taste}]", options_for_select((1..10).map { |n| [n, n] }), class: 'span2'
+    .span6
+      %h3 What are you ranking?
+      = f.select :coffee_type_id, CoffeeType.all.collect {|p| [ p.name, p.id ] }
+      = f.input :notes, as: :text, input_html: { class: 'text', rows: 7 }, label: 'Some notes? (for your eyes only)'
 
   .form-actions
     = f.button :submit
