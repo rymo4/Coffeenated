@@ -8,14 +8,10 @@ class CoffeeType
   has_many :rankings
 
   def maps_url
-    'http://maps.googleapis.com/maps/api/staticmap?' + {
-      center: 'Brooklyn+Bridge,New+York,NY',
-      zoom: 13,
-      size: '400x400',
-      maptype: 'roadmap',
-      markers: 'color:blue%7label:S%7C40.702147,-74.015794',
-      sensor: 'false'
-    }.inject('') {|str, opt| str << '&' << opt.join('=') }
+    GoogleStaticMap.new(
+      :zoom => 11,
+      :center => MapLocation.new(:address => location)
+    ).url(:auto)
   end
 
 end

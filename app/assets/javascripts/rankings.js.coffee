@@ -113,7 +113,6 @@
     true
   if $('#ranking')
     $scope.render('#ranking')
-  if $('')
 
 $(document).ready ->
   $.widget( "custom.catcomplete", $.ui.autocomplete, {
