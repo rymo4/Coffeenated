@@ -11,7 +11,9 @@
           = select_tag "ranking[data][#{taste}]", options_for_select((1..10).map { |n| [n, n] }), class: 'span2'
     .span6
       %h3 What are you ranking?
-      = f.select :coffee_type_id, CoffeeType.all.collect {|p| [ p.name, p.id ] }
+      %input#roaster_autocomplete
+      = f.input :coffee_type_id, as: :hidden
+      =# f.select :coffee_type_id, CoffeeType.all.collect {|p| [ p.name, p.id ] }
       = f.input :notes, as: :text, input_html: { class: 'text', rows: 7 }, label: 'Some notes? (for your eyes only)'
 
   .form-actions

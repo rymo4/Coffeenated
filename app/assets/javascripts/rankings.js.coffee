@@ -112,3 +112,27 @@
       .attr("text-anchor", "middle")
     true
   $scope.render('#ranking')
+
+$(document).ready ->
+  $.widget( "custom.catcomplete", $.ui.autocomplete, {
+    _renderMenu: ( ul, items ) ->
+      that = this
+      currentCategory = ""
+      $.each items, ( index, item ) ->
+        if ( item.category != currentCategory )
+          ul.append( "<li class='ui-autocomplete-category'>" + item.category + "</li>" )
+          currentCategory = item.category
+        that._renderItemData( ul, item )
+  })
+  roasters = client.get 'roasters'
+  $("input#roaster_autocomplete").catcomplete(
+    source: roasters
+    focus: ( event, ui ) ->
+      $('#roaster_autocomplete').val(ui.item.label)
+      $('#ranking_coffee_type_id').val(ui.item.value)
+      false
+    select: ( event, ui ) ->
+      $('#roaster_autocomplete').val(ui.item.label)
+      $('#ranking_coffee_type_id').val(ui.item.value)
+      false
+  )

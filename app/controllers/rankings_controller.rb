@@ -19,6 +19,9 @@ class RankingsController < ApplicationController
 
   def new
     @ranking = Ranking.new
+    @autocomplete_roasters = CoffeeType.all.map { |r| 
+      {label: r.name, value: r.id, category: r.roaster.name } 
+    }.to_json
 
     respond_to do |format|
       format.html # new.html.erb
