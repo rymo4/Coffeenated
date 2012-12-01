@@ -1,8 +1,7 @@
 %p#notice= notice
 
-%h1= @roaster.name
-
 %div{'ng-controller' => 'RoastersCtlr'}
+  %h1 {{roaster.name}}
   .row-fluid{'ng-repeat' => 'group in coffee_groups'}
     .span4{'ng-repeat' => 'coffee in group'}
       .row-fluid
@@ -19,7 +18,7 @@
             .span12
               .span6
                 .logowrapper
-                  %img{src: "{{coffee.maps_url}}"}
+                  %img{'ng-src' => "{{coffee.maps_url}}"}
               .span6#average_ranking
         .modal-footer
           %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
