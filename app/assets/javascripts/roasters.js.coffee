@@ -6,6 +6,7 @@
   $http.get("/roasters/#{client.get('current_roaster')._id}.json").success (roaster) ->
     $scope.roaster = roaster
     $scope.coffee_types = $scope.roaster.coffee_types
+    $scope.current_coffee = $scope.coffee_types[0]
     $scope.coffee_groups = _.toArray(_.groupBy($scope.coffee_types, (a, b) ->
       Math.floor(b/3)
     ))
@@ -28,6 +29,12 @@
           console.log num_rankings
           avg[coffee_id][taste] = avg[coffee_id][taste] / num_rankings
       avg
-    $scope.current_coffee = {}
-    $scope.show_coffee = (id) ->
-      $scope.current_coffee = id
+    $scope.show_coffee = (coffee) ->
+      $scope.current_coffee = coffee
+      data = _.find($scope.average_rankings(), (obj, id) -> id == coffee._id)
+      ranks = _.map data, (v, k) ->
+        {label: k, score: v}
+      console.log ranks
+      selector = '#average_ranking'
+      $(selector).html('')
+      client.render_graph(selector,ranks)
