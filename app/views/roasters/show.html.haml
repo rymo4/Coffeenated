@@ -2,23 +2,24 @@
 
 %h1= @roaster.name
 
-%div{'ng-controller' => 'RankingCtrlr'}
-  - @roaster.coffee_types.each_slice(3) do |group|
-    .row-fluid
-      - group.each do |coffee|
-        .span4
-          = coffee.description
-          %a.btn{"data-toggle" => "modal", :href => "#coffee_#{coffee.id}", :role => "button"}= coffee.name
+%div{'ng-controller' => 'RoastersCtlr'}
+  .row-fluid{'ng-repeat' => 'group in coffee_groups'}
+    .span4{'ng-repeat' => 'coffee in group'}
+      .row-fluid
+        {{coffee.description}}
+      .row-fluid
+        %a.btn{"data-toggle" => "modal", :href => "#coffee_{{coffee.id}}", :role => "button"} {{coffee.name}}
 
-          .modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", "id" => "coffee_#{coffee.id}"}
-            .modal-header
-              %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-              %h3#coffee_typeLabel= coffee.name
-            .modal-body
-              .row-fluid
-                .span12
-                  .span6
-                    .logowrapper
-                      %img{src: "#{coffee.maps_url}"}
-            .modal-footer
-              %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+      .modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", "id" => "coffee_{{coffee.id}}"}
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+          %h3#coffee_typeLabel {{coffee.name}}
+        .modal-body
+          .row-fluid
+            .span12
+              .span6
+                .logowrapper
+                  %img{src: "{{coffee.maps_url}}"}
+              .span6#average_ranking
+        .modal-footer
+          %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close

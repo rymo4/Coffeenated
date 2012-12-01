@@ -21,6 +21,9 @@
       - if @autocomplete_roasters
         :javascript
           client.store('roasters', #{@autocomplete_roasters});
+      - if @roaster
+        :javascript
+          client.store('current_roaster', #{@roaster.to_json});
   %body{:class => "#{controller_name} #{action_name}"}
     %header.navbar.navbar-fixed-top
       %nav.navbar-inner

@@ -9,9 +9,14 @@ class CoffeeType
 
   def maps_url
     GoogleStaticMap.new(
-      :zoom => 11,
+      :zoom => 12,
+      :maptype => "satellite",
       :center => MapLocation.new(:address => location)
     ).url(:auto)
+  end
+
+  def as_json options = {}
+    super.merge(rankings: rankings, maps_url: maps_url)
   end
 
 end

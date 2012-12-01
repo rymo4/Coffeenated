@@ -3,6 +3,8 @@
 
   .form-inputs
     = f.input :name
+    = f.input :location, label: 'Location of Origin'
+    = f.input :description, as: :text
     = collection_select :coffee_type, :roaster_id, Roaster.all, :id, :name
 
   .form-actions
