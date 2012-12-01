@@ -1,8 +1,10 @@
 %p#notice= notice
 
-%p
-  %b Data:
-  = @ranking.data
+.well#points{'ng-controller' => 'RankingCtrlr'}
+  %h2#greeting This is what #{@ranking.user.fullname} thought
+  %img#coffee{src: 'http://findicons.com/files/icons/1588/farm_fresh_web/32/cup.png'}
+  #ranking
+%img{src: "#{@ranking.maps_url}" }
 
 = link_to 'Edit', edit_ranking_path(@ranking)
 \|

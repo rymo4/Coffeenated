@@ -1,5 +1,5 @@
 !!!
-%html
+%html{'ng-app' => true}
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
       %title= content_for?(:title) ? yield(:title) : "Coffeenated"
@@ -7,10 +7,15 @@
         = stylesheet_link_tag "application", :media => "all"
         = javascript_include_tag "application"
         = csrf_meta_tags
+        %script{src: 'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js'}
+        %script{src: 'http://underscorejs.org/underscore-min.js'}
         = yield :head
       - if current_user
         :javascript
           client.store('current_user', #{current_user.to_json});
+      - if @ranking
+        :javascript
+          client.store('current_ranking', #{@ranking.to_json});
   %body{:class => "#{controller_name} #{action_name}"}
     %header.navbar.navbar-fixed-top
       %nav.navbar-inner

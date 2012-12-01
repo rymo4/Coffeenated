@@ -1,8 +1,10 @@
 = simple_form_for(@ranking) do |f|
   = f.error_notification
 
-  .form-inputs
-    = f.input :data
+  - Ranking::TASTES.each do |taste|
+    .form-inputs
+      = f.label taste
+      = select_tag "ranking[data][#{taste}]", options_for_select((1..10).map { |n| [n, n] })
 
   .form-actions
     = f.button :submit

@@ -1,6 +1,4 @@
 class RankingsController < ApplicationController
-  # GET /rankings
-  # GET /rankings.json
   def index
     @rankings = Ranking.all
 
@@ -10,8 +8,6 @@ class RankingsController < ApplicationController
     end
   end
 
-  # GET /rankings/1
-  # GET /rankings/1.json
   def show
     @ranking = Ranking.find(params[:id])
 
@@ -21,8 +17,6 @@ class RankingsController < ApplicationController
     end
   end
 
-  # GET /rankings/new
-  # GET /rankings/new.json
   def new
     @ranking = Ranking.new
 
@@ -32,15 +26,16 @@ class RankingsController < ApplicationController
     end
   end
 
-  # GET /rankings/1/edit
   def edit
     @ranking = Ranking.find(params[:id])
   end
 
-  # POST /rankings
-  # POST /rankings.json
   def create
-    @ranking = Ranking.new(params[:ranking])
+    params[:ranking][:data].each do |k, v|
+      params[:ranking][:data][k] = v.to_i
+    end
+
+    @ranking = current_user.rankings.new(params[:ranking])
 
     respond_to do |format|
       if @ranking.save
@@ -53,8 +48,6 @@ class RankingsController < ApplicationController
     end
   end
 
-  # PUT /rankings/1
-  # PUT /rankings/1.json
   def update
     @ranking = Ranking.find(params[:id])
 
@@ -69,8 +62,6 @@ class RankingsController < ApplicationController
     end
   end
 
-  # DELETE /rankings/1
-  # DELETE /rankings/1.json
   def destroy
     @ranking = Ranking.find(params[:id])
     @ranking.destroy

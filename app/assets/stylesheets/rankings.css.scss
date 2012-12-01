@@ -1,3 +1,24 @@
 // Place all the styles related to the rankings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#points {
+  background: #332822;
+  height: 600px;
+}
+#ranking {
+  width: 300px;
+  margin: 0 auto;
+}
+img#coffee {
+  left: 940px;
+  top: 340px;
+  width: 20px;
+}
+#greeting {
+  text-align: center;
+  color: #F2DFBC;
+  font-size: 60px;
+  font-weight: 200;
+  top: 100px;
+}
