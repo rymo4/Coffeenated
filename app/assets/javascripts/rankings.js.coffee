@@ -10,8 +10,8 @@
     # Sizes
     bigRadius = 150
     pointRadius = 3
-    right = bigRadius
-    down = 350
+    right = bigRadius + 20
+    down = bigRadius + 20
     scoreRange = bigRadius * 0.8
 
     # Colors

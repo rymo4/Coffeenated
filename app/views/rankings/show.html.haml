@@ -2,9 +2,12 @@
 
 .well#points{'ng-controller' => 'RankingCtrlr'}
   %h2#greeting This is what #{@ranking.user.fullname} thought
-  %img#coffee{src: 'http://findicons.com/files/icons/1588/farm_fresh_web/32/cup.png'}
-  #ranking
-%img{src: "#{@ranking.maps_url}" }
+  .row
+    .span5
+      %img{src: "#{@ranking.maps_url}" }
+    .span5
+      #ranking
+        %img#coffee{src: 'http://findicons.com/files/icons/1588/farm_fresh_web/32/cup.png'}
 
 = link_to 'Edit', edit_ranking_path(@ranking)
 \|
