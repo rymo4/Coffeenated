@@ -1,11 +1,8 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @coffee_type.name
-%p
-  %b Roaster:
-  = @coffee_type.roaster_id
+%h1 #{@coffee_type.name} by #{link_to @coffee_type.roaster.name, @coffee_type.roaster}
+
+%img{src: "#{@coffee_type.maps_url}"}
 
 = link_to 'Edit', edit_coffee_type_path(@coffee_type)
 \|
