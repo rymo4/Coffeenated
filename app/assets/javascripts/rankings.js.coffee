@@ -111,7 +111,9 @@
       .attr("y", (d) -> d.y)
       .attr("text-anchor", "middle")
     true
-  $scope.render('#ranking')
+  if $('#ranking')
+    $scope.render('#ranking')
+  if $('')
 
 $(document).ready ->
   $.widget( "custom.catcomplete", $.ui.autocomplete, {
