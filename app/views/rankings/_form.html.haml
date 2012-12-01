@@ -11,9 +11,10 @@
           = select_tag "ranking[data][#{taste}]", options_for_select((1..10).map { |n| [n, n] }), class: 'span2'
     .span6
       %h3 What are you ranking?
-      %input#roaster_autocomplete
+      = f.label "Search by Coffee"
+      = text_field_tag :nada, '', id: 'roaster_autocomplete'
       = f.input :coffee_type_id, as: :hidden
-      =# f.select :coffee_type_id, CoffeeType.all.collect {|p| [ p.name, p.id ] }
+      = link_to "Or Create a new coffee", new_coffee_type_path
       = f.input :notes, as: :text, input_html: { class: 'text', rows: 7 }, label: 'Some notes? (for your eyes only)'
 
   .form-actions
