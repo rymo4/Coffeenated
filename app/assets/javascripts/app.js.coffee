@@ -3,9 +3,9 @@
   data: {}
   store: (key, val) -> @data[key] = val
   get:   (key)      -> @data[key]
-  render_graph: (selector, rankings) ->
+  render_graph: (selector, rankings, options = {}) ->
     # Sizes
-    bigRadius = 150
+    bigRadius = options.bigRadius || 150
     pointRadius = 3
     right = bigRadius + 20
     down = bigRadius + 20
@@ -39,7 +39,7 @@
       
     nodes = for i in [0..points-1]
       rad = TOTAL_RADIANS / points * i
-      score = (MAX_VALUE - rankings[i].score) / MAX_VALUE * bigRadius;
+      score = (MAX_VALUE - rankings[i].score) / MAX_VALUE * bigRadius
       node = edgePosition(bigRadius, rad, score)
       x: node.x
       y: node.y

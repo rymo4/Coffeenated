@@ -37,4 +37,10 @@
       console.log ranks
       selector = '#average_ranking'
       $(selector).html('')
-      client.render_graph(selector,ranks)
+      client.render_graph(selector, ranks, bigRadius: 80)
+
+$('#coffee_details').css({
+  width: 'auto',
+  'margin-left': ->
+    -($(this).width() / 2)
+})

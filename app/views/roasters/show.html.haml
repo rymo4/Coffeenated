@@ -17,8 +17,11 @@
       .row-fluid
         .span12
           .span6
+            %h4 Location of Origin
             .logowrapper
               %img{'ng-src' => "{{current_coffee.maps_url}}"}
-          .span6#average_ranking
+          .span6
+            %h4 Average Taste Profile
+            #average_ranking
     .modal-footer
       %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close

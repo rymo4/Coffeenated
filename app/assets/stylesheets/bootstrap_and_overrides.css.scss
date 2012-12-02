@@ -1,3 +1,12 @@
 @import "bootstrap";
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
+.modal-body {
+  background: #332822;
+}
+.modal {
+  h4 { 
+    color: #C2BD86; 
+    text-align: center;
+  }
+}

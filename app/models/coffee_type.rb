@@ -8,11 +8,15 @@ class CoffeeType
   has_many :rankings
 
   def maps_url
-    GoogleStaticMap.new(
-      :zoom => 12,
-      :maptype => "satellite",
-      :center => MapLocation.new(:address => location)
-    ).url(:auto)
+    map_location = MapLocation.new(:address => location)
+    map = GoogleStaticMap.new(
+      :zoom => 7,
+      :maptype => "hybrid",
+      :center => map_location,
+      :format => "gif"
+    )
+    map.markers << MapMarker.new(:color => "red", :location => map_location)
+    map.url(:auto)
   end
 
   def as_json options = {}
