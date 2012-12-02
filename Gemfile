@@ -22,3 +22,4 @@ gem "devise", ">= 2.1.2"
 gem "simple_form", ">= 2.0.4"
 gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "googlestaticmap"
+ruby "1.9.3"
