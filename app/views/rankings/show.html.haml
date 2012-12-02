@@ -1,11 +1,18 @@
-.well#points{'ng-controller' => 'RankingCtrlr'}
-  %h2#greeting This is what #{@ranking.user.fullname} thought
+.well.coffee-color#points{'ng-controller' => 'RankingCtrlr'}
+  %h3.center #{@ranking.coffee_type.roaster.name} #{@ranking.coffee_type.name}, #{@ranking.brew_method}
   .row
     .span5
       %img{src: "#{@ranking.coffee_type.maps_url}"}
-    .span5
+    .span5.limit-height
       #ranking
         %img#coffee{src: 'http://findicons.com/files/icons/1588/farm_fresh_web/32/cup.png'}
+    .span12
+      %h4 Overall Rating
+      #{@ranking.overall}/10
+      %h4 Brew Date
+      = @ranking.created_at.strftime("%m/%d/%Y")
+      %h4 Notes
+      = @ranking.notes.blank? ? "You didn't take any notes : (" : @ranking.notes
 
 = link_to 'Edit', edit_ranking_path(@ranking)
 \|

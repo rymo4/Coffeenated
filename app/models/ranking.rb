@@ -1,5 +1,6 @@
 class Ranking
   include Mongoid::Document
+  include Mongoid::Timestamps
   TASTES = %(Dark Sour Bitter Nutty Sweet Salty Floural Smokey Fruity).split.freeze
   BREW_METHODS = ['Pourover', 'Expresso', 'Drip', 'Instant', 'Percolator', 'French Press', 'Cold Brew'].freeze
 

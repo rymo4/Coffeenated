@@ -9,7 +9,8 @@
   - if user_signed_in?
     %li= link_to 'Edit account', edit_user_registration_path
     %li= link_to 'Rate Some Coffee', new_ranking_path
-    %li= link_to 'See the Roasters', roasters_path
+    %li= link_to 'The Roasters', roasters_path
+    %li= link_to 'My Rankings', rankings_path 
 
   - else
     %li
