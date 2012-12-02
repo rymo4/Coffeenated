@@ -13,6 +13,10 @@
       avg = (avg / coffee.rankings.length).toFixed(2)
       _.defaults coffee, average_rating: avg
 
+    $scope.top_coffees = _.sortBy($scope.roaster.coffee_types, (coffee) ->
+      1 / coffee.average_rating
+    ).slice(0,3)
+
     $scope.current_coffee = $scope.roaster.coffee_types[0]
     $scope.coffee_groups = _.toArray(_.groupBy($scope.roaster.coffee_types, (a, b) ->
       Math.floor(b/3)

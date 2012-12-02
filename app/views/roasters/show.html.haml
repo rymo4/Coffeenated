@@ -2,11 +2,24 @@
 
 %div{'ng-controller' => 'RoastersCtlr'}
   %h1 {{roaster.name}}
+  .row-fluid
+    .span8
+      %img{src: '{{roaster.image_url}}'}
+    .span4
+      %h4 Homepage
+      =link_to '{{roaster.url}}', '{{roaster.url}}'
+      %h4 Top Coffees
+      %div{'ng-repeat' => 'top_coffee in top_coffees'}
+        {{top_coffee.name}}
+  %hr
   .row-fluid{'ng-repeat' => 'group in coffee_groups'}
     .span4{'ng-repeat' => 'coffee in group'}
       .row-fluid
+        %h5 {{coffee.name}}
+      .row-fluid
         {{coffee.description.substring(0,300) + "..."}}
       .row-fluid
-        %a.btn{"ng-click" => "show_coffee(coffee)", "data-toggle" => "modal", :href => "#coffee_{{coffee.id}}", :role => "button"} {{coffee.name}}
+        %br
+        %a.btn{"ng-click" => "show_coffee(coffee)", "data-toggle" => "modal", :href => "#coffee_{{coffee.id}}", :role => "button"} Details
   
   = render 'shared/coffee_modal'
