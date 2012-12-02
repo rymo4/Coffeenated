@@ -3,6 +3,7 @@ development:
   sessions:
     # Defines the default session. (required)
     default:
+      uri: <%= ENV['MONGOLAB_URI'] %>
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
       database: coffeenated_development
@@ -78,16 +79,10 @@ test:
         # low amounts for fast failures.
         max_retries: 1
         retry_interval: 0
-<% if ENV['MONGOLAB_URI'] %>
-  <% uri = URI.parse(ENV['MONGOLAB_URI']) %>
 production:
-  <<: *defaults
   sessions:
     default:
-      <<: *default_session
-      database: <%= uri.path.sub('/','') %>
-      username: <%= uri.user %>
-      password: <%= uri.password %>
-      hosts:
-        - <%= uri.host %>:<%= uri.port %>
-<% end %>
+      uri: <%= ENV['MONGOLAB_URI'] %>
+      options:
+        skip_version_check: true
+        safe: true
