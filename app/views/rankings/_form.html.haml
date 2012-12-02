@@ -3,18 +3,25 @@
   .row-fluid
     .span6
       %h3 What did you think?
-      = f.label :overall
-      = f.select :overall, (1..10).to_a, {}, class: 'span2'
+      .row-fluid
+        .span2
+          = f.label :overall, class: 'score'
+        .span4
+          = f.select :overall, (1..10).to_a, {}, class: 'span4'
       - Ranking::TASTES.each do |taste|
-        .form-inputs
-          = f.label taste
-          = select_tag "ranking[data][#{taste}]", options_for_select((1..10).map { |n| [n, n] }), class: 'span2'
+        .row-fluid
+          .span2
+            = f.label taste, class: 'score'
+          .span4
+            = select_tag "ranking[data][#{taste}]", options_for_select((1..10).map { |n| [n, n] }), class: 'span4'
     .span6
       %h3 What are you ranking?
       = f.label "Search by Coffee"
       = text_field_tag :nada, '', id: 'roaster_autocomplete'
       = f.input :coffee_type_id, as: :hidden
       = link_to "Or Create a new coffee", new_coffee_type_path
+      = f.label :brew_method
+      = f.select :brew_method, Ranking::BREW_METHODS
       = f.input :notes, as: :text, input_html: { class: 'text', rows: 7 }, label: 'Some notes? (for your eyes only)'
 
   .form-actions

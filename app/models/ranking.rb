@@ -1,6 +1,7 @@
 class Ranking
   include Mongoid::Document
-  TASTES = %(Dark Sour Bitter Nutty).split.freeze
+  TASTES = %(Dark Sour Bitter Nutty Sweet Salty Floural Smokey Fruity).split.freeze
+  BREW_METHODS = ['Pourover', 'Expresso', 'Drip', 'Instant', 'Percolator', 'French Press', 'Cold Brew'].freeze
 
   field :data, 
     type: Hash, 
@@ -8,6 +9,7 @@ class Ranking
 
   field :notes, type: String
   field :overall, type: Integer
+  field :brew_method, type: String
 
   belongs_to :coffee_type
   belongs_to :user
