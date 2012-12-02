@@ -31,3 +31,9 @@ First of all. Make sure to click the first link and create an account on the sit
 * Some ```attr_accessible```s
 * Nicer looking routes
 * Lots of other little things - redirects, autofilling edit forms, etc.
+
+## If you want to Run it
+
+* Make sure you have a mongo server running. 
+* Make sure to use Ruby 1.9.3 (even 1.9.2 won't work)
+* Have fun!
