@@ -48,6 +48,9 @@ $(document).ready ->
         console.log ranking._id
         client.render_graph("#ranking_#{ranking._id}", ranks, bigRadius: 100)
 
+@RankingCtrlr.$inject = ['$scope', '$http']
+@MyRankingsCtlr.$inject = ['$scope', '$http']
+
 $(document).ready ->
   $(".slider" ).slider({
     value:0,

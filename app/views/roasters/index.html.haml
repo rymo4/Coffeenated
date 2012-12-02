@@ -1,18 +1,19 @@
-%h1 Listing roasters
+%h1 Roasters
 
-%table
+%table.table.table-striped.table-bordered
   %tr
     %th Name
-    %th
-    %th
-    %th
+    %th # Coffees
+    %th Average Rating
 
   - @roasters.each do |roaster|
     %tr
-      %td= roaster.name
-      %td= link_to 'Show', roaster
-      %td= link_to 'Edit', edit_roaster_path(roaster)
-      %td= link_to 'Destroy', roaster, method: :delete, data: { confirm: 'Are you sure?' }
+      %td
+        = link_to roaster.name, roaster
+        (#{link_to 'edit', edit_roaster_path(roaster)})
+
+      %td= pluralize roaster.coffee_types.count, 'coffee'
+      %td= roaster.average_rating
 
 %br
 

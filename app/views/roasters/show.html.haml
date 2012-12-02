@@ -7,7 +7,7 @@
       %img{src: '{{roaster.image_url}}'}
     .span4
       %h4 Homepage
-      =link_to '{{roaster.url}}', '{{roaster.url}}'
+      = link_to '{{roaster.url}}', '{{roaster.url}}'
       %h4 Top Coffees
       %div{'ng-repeat' => 'top_coffee in top_coffees'}
         {{top_coffee.name}}

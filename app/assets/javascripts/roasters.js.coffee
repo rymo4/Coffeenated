@@ -50,6 +50,8 @@
       $(selector).html('')
       client.render_graph(selector, ranks, bigRadius: 80)
 
+@RoastersCtlr.$inject = ['$scope', '$http']
+
 $('#coffee_details').css({
   width: 'auto',
   'margin-left': ->
