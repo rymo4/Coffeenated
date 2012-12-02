@@ -7,6 +7,10 @@ class CoffeeType
   belongs_to :roaster
   has_many :rankings
 
+  validate :description, required: true
+  validate :location, required: true
+  validate :name, required: true
+
   def maps_url
     map_location = MapLocation.new(:address => location)
     map = GoogleStaticMap.new(

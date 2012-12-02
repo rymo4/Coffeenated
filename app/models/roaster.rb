@@ -5,9 +5,9 @@ class Roaster
   field :image_url, type: String
   has_many :coffee_types
 
-  validate :name, required: true
-  validate :url, required: true
-  validate :image_url, required: true
+  validates :image_url, presence: true
+  validates :url, presence: true
+  validates :name, presence: true
 
   def as_json options = {}
     super.merge coffee_types: coffee_types
