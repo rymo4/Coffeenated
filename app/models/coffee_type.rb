@@ -27,4 +27,8 @@ class CoffeeType
     super.merge(rankings: rankings, maps_url: maps_url)
   end
 
+  def average_rating
+    rankings.map(&:overall).inject(&:+) / rankings.count
+  end
+
 end

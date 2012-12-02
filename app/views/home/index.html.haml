@@ -8,4 +8,5 @@
   .span4
     %h5= @featured_coffee.name
     %p= @featured_coffee.description
+    %p Average Rating: #{@featured_coffee.average_rating}/10
     = link_to 'Check it out', @featured_roaster, class: 'btn btn-primary'
