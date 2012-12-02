@@ -15,7 +15,7 @@
       - if current_user
         :javascript
           client.store('current_user', #{current_user.to_json});
-      - if @ranking
+      - if @ranking and not @ranking.new_record?
         :javascript
           client.store('current_ranking', #{@ranking.to_json});
       - if @autocomplete_roasters

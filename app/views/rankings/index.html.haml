@@ -1,16 +1,13 @@
-%h1 My Rankings
+.well.coffee-color
+  %h1 My Rankings
 
-%div{'ng-controller' => 'MyRankingsCtlr'}
-  .row-fluid{'ng-repeat' => 'group in coffee_groups'}
-    .span4{'ng-repeat' => 'coffee in group'}
-- @rankings.each_slice(3) do |group|
-  .row-fluid
-    - group.each do |ranking|
-      .span4
-        #{ranking.coffee_type.name} by #{ranking.coffee_type.roaster.name}
-        = ranking.brew_method
-        = link_to 'Destroy', ranking, method: :delete, data: { confirm: 'Are you sure?' }
+  %div{'ng-controller' => 'MyRankingsCtlr'}
+    .row-fluid{'ng-repeat' => 'group in groups'}
+      .span4{'ng-repeat' => 'ranking in group'}
+        .my-rankings{id: "ranking_{{ranking._id}}"}
+        %p.center {{ranking.coffee_type.name}} by {{ranking.coffee_type.roaster_name}}
 
-%br
+    {{render_graphs()}}
+  %br
 
-= link_to 'New Ranking', new_ranking_path
+  = link_to 'New Ranking', new_ranking_path

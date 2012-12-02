@@ -36,5 +36,14 @@ $(document).ready ->
       false
   )
 
-@MyRankingsCtlr = ($http, $http) ->
+@MyRankingsCtlr = ($http, $scope) ->
   $http.get("/rankings.json").success (rankings) ->
+    $scope.rankings = rankings
+    $scope.groups = _.toArray(_.groupBy($scope.rankings, (a, b) ->
+      Math.floor(b/3)))
+    $scope.render_graphs = ->
+      _.each $scope.rankings, (ranking) ->
+        ranks = _.map(ranking.data, (v,k) -> {label: k, score: v})
+        console.log ranks
+        console.log ranking._id
+        client.render_graph("#ranking_#{ranking._id}", ranks, bigRadius: 100)
