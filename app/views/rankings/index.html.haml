@@ -6,7 +6,6 @@
       .span4{'ng-repeat' => 'ranking in group'}
         .my-rankings{id: "ranking_{{ranking._id}}"}
         %p.center {{ranking.coffee_type.name}} by {{ranking.coffee_type.roaster_name}}
-
     {{render_graphs()}}
   %br
 

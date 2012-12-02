@@ -47,3 +47,13 @@ $(document).ready ->
         console.log ranks
         console.log ranking._id
         client.render_graph("#ranking_#{ranking._id}", ranks, bigRadius: 100)
+
+$(document).ready ->
+  $(".slider" ).slider({
+    value:0,
+    min: 0,
+    max: 10,
+    step: 1,
+    slide: (event, ui) ->
+      $(this).next('input').val(ui.value)
+  })

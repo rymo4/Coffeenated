@@ -8,7 +8,7 @@ class Ranking
     default: TASTES.each_with_object({}) { |k, h| h[k] = 0 }
 
   field :notes, type: String
-  field :overall, type: Integer
+  field :overall, type: Integer, default: 0
   field :brew_method, type: String
 
   belongs_to :coffee_type
