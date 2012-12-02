@@ -5,7 +5,7 @@
   .row-fluid{'ng-repeat' => 'group in coffee_groups'}
     .span4{'ng-repeat' => 'coffee in group'}
       .row-fluid
-        {{coffee.description}}
+        {{coffee.description.substring(0,300) + "..."}}
       .row-fluid
         %a.btn{"ng-click" => "show_coffee(coffee)", "data-toggle" => "modal", :href => "#coffee_{{coffee.id}}", :role => "button"} {{coffee.name}}
 
@@ -23,5 +23,7 @@
           .span6
             %h4 Average Taste Profile
             #average_ranking
+      .row-fluid
+        %p {{current_coffee.description}}
     .modal-footer
       %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
