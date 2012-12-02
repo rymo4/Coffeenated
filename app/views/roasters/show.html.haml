@@ -8,22 +8,5 @@
         {{coffee.description.substring(0,300) + "..."}}
       .row-fluid
         %a.btn{"ng-click" => "show_coffee(coffee)", "data-toggle" => "modal", :href => "#coffee_{{coffee.id}}", :role => "button"} {{coffee.name}}
-
-  .modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", "id" => "coffee_{{coffee.id}}"}
-    .modal-header
-      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-      %h3#coffee_typeLabel {{current_coffee.name}}
-    .modal-body
-      .row-fluid
-        .span12
-          .span6
-            %h4 Location of Origin
-            .logowrapper
-              %img{'ng-src' => "{{current_coffee.maps_url}}"}
-          .span6
-            %h4 Average Taste Profile
-            #average_ranking
-      .row-fluid
-        %p {{current_coffee.description}}
-    .modal-footer
-      %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+  
+  = render 'shared/coffee_modal'

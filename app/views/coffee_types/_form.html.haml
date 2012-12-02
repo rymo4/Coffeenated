@@ -3,9 +3,10 @@
 
   .form-inputs
     = f.input :name
+    = f.label :roaster
+    = collection_select :coffee_type, :roaster_id, Roaster.all, :id, :name
     = f.input :location, label: 'Location of Origin'
     = f.input :description, as: :text
-    = collection_select :coffee_type, :roaster_id, Roaster.all, :id, :name
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, "Create Coffee"

@@ -14,4 +14,8 @@ class Ranking
   belongs_to :coffee_type
   belongs_to :user
 
+  def as_json options = {}
+    super(options).merge(:coffee_type => coffee_type.attributes.merge(roaster_name: coffee_type.roaster.name))
+  end
+
 end

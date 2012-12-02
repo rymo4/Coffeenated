@@ -35,3 +35,6 @@ $(document).ready ->
       $('#ranking_coffee_type_id').val(ui.item.value)
       false
   )
+
+@MyRankingsCtlr = ($http, $http) ->
+  $http.get("/rankings.json").success (rankings) ->

@@ -1,18 +1,15 @@
-%h1 Listing rankings
+%h1 My Rankings
 
-%table
-  %tr
-    %th Data
-    %th
-    %th
-    %th
-
-  - @rankings.each do |ranking|
-    %tr
-      %td= ranking.data
-      %td= link_to 'Show', ranking
-      %td= link_to 'Edit', edit_ranking_path(ranking)
-      %td= link_to 'Destroy', ranking, method: :delete, data: { confirm: 'Are you sure?' }
+%div{'ng-controller' => 'MyRankingsCtlr'}
+  .row-fluid{'ng-repeat' => 'group in coffee_groups'}
+    .span4{'ng-repeat' => 'coffee in group'}
+- @rankings.each_slice(3) do |group|
+  .row-fluid
+    - group.each do |ranking|
+      .span4
+        #{ranking.coffee_type.name} by #{ranking.coffee_type.roaster.name}
+        = ranking.brew_method
+        = link_to 'Destroy', ranking, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

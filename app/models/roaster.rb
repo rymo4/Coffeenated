@@ -6,4 +6,5 @@ class Roaster
   def as_json options = {}
     super.merge coffee_types: coffee_types
   end
+
 end
