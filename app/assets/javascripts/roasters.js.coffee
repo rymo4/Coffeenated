@@ -5,9 +5,16 @@
 @RoastersCtlr = ($http, $scope) ->
   $http.get("/roasters/#{client.get('current_roaster')._id}.json").success (roaster) ->
     $scope.roaster = roaster
-    $scope.coffee_types = $scope.roaster.coffee_types
-    $scope.current_coffee = $scope.coffee_types[0]
-    $scope.coffee_groups = _.toArray(_.groupBy($scope.coffee_types, (a, b) ->
+    $scope.roaster.coffee_types = _.map $scope.roaster.coffee_types, (coffee, v) ->
+      avg = _.reduce(
+        coffee.rankings,
+        (sum, ranking) -> sum + ranking.overall,
+        0)
+      avg = (avg / coffee.rankings.length).toFixed(2)
+      _.defaults coffee, average_rating: avg
+
+    $scope.current_coffee = $scope.roaster.coffee_types[0]
+    $scope.coffee_groups = _.toArray(_.groupBy($scope.roaster.coffee_types, (a, b) ->
       Math.floor(b/3)
     ))
 

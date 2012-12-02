@@ -1,6 +1,6 @@
 class RankingsController < ApplicationController
   def index
-    @rankings = current_user.rankings.all
+    @rankings = current_user.rankings.all.reverse
 
     respond_to do |format|
       format.html # index.html.erb

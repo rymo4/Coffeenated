@@ -13,6 +13,8 @@
           %h4 Average Taste Profile
           #average_ranking
     .row-fluid
+      %p Average Rating: {{current_coffee.average_rating}}/10 ({{current_coffee.rankings.length}} votes)
+    .row-fluid
       %p {{current_coffee.description}}
   .modal-footer
     %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
