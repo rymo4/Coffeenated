@@ -36,7 +36,7 @@ $(document).ready ->
       false
   )
 
-@MyRankingsCtlr = ($http, $scope) ->
+@MyRankingsCtlr = ($scope, $http) ->
   $http.get("/rankings.json").success (rankings) ->
     $scope.rankings = rankings
     $scope.groups = _.toArray(_.groupBy($scope.rankings, (a, b) ->
