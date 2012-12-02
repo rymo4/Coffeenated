@@ -1,2 +1,11 @@
-%h2 Welcome to CoffeeNation 
-%h3 The best place to review and browse coffee on the internet
+%h2 Welcome to Coffeenated
+%h5 The best place to review and browse coffee on the internet.
+%hr
+%h3 Featured Roaster - #{link_to @featured_roaster.name, @featured_roaster}
+.row
+  .span8
+    = image_tag @featured_roaster.image_url
+  .span4
+    %h5= @featured_coffee.name
+    %p= @featured_coffee.description
+    = link_to 'Check it out', @featured_roaster, class: 'btn btn-primary'
