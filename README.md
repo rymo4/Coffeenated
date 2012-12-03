@@ -15,7 +15,7 @@ An open source rails app for reviewing fancy coffee. See it [live](http://coffee
 
 ## What to Look At
 
-First of all. Make sure to click the first link and create an account on the site so that you can see everything.
+First of all, make sure to click the first link and create an account on the site so that you can see everything.
 
 | Link        | Why        |
 |------------|------------|
