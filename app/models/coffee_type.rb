@@ -3,6 +3,8 @@ class CoffeeType
   field :name, type: String
   field :description, type: String
   field :location, type: String
+  field :average_rankings, type: Hash
+  field :num_rankings, type: Integer
 
   belongs_to :roaster
   has_many :rankings
@@ -23,12 +25,30 @@ class CoffeeType
     map.url(:auto)
   end
 
+  # Updates old records with expensive computation
+  def update_average!
+    avg = Hash.new(0)
+    ranks = rankings
+    ranks.all.each do |rank|
+      avg.merge!(rank.data) { |key, v1, v2| v1 + v2 }
+    end
+    avg.merge!(avg) { |k, v| v.to_f / ranks.count }
+    update_attribute :average_rankings, avg
+    update_attribute :num_rankings, ranks.count
+    avg
+  end
+
+
   def as_json options = {}
     super.merge(rankings: rankings, maps_url: maps_url)
   end
 
   def average_rating
     rankings.map(&:overall).inject(&:+) / rankings.count
+  end
+
+  def simular_coffees
+    CoffeeType.all
   end
 
 end

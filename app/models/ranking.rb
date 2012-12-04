@@ -1,6 +1,9 @@
 class Ranking
   include Mongoid::Document
   include Mongoid::Timestamps
+
+  before_create :update_coffee_average
+
   TASTES = %(Dark Sour Bitter Nutty Sweet Salty Floural Smokey Fruity).split.freeze
   BREW_METHODS = ['Pourover', 'Expresso', 'Drip', 'Instant', 'Percolator', 'French Press', 'Cold Brew'].freeze
 
@@ -21,6 +24,14 @@ class Ranking
 
   def as_json options = {}
     super(options).merge(:coffee_type => coffee_type.attributes.merge(roaster_name: coffee_type.roaster.name))
+  end
+
+  def update_coffee_average
+    ranks = coffee_type.num_rankings
+    avg = coffee_type.average_rankings.merge(data) { |k, avg_v, new_v|
+      ((avg_v * ranks) + new_v) / (ranks + 1)
+    }
+    coffee_type.update_attributes average_rankings: avg, num_rankings: ranks + 1
   end
 
 end
