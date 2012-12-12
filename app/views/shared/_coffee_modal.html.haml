@@ -1,4 +1,4 @@
-.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", "id" => "coffee_{{coffee.id}}"}
+.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", "id" => "coffee_modal"}
   .modal-header
     %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
     %h3#coffee_typeLabel {{current_coffee.name}}
@@ -6,17 +6,19 @@
     .row-fluid
       .span12
         .span6
-          %h4 Location of Origin
+          %h4 Origin
           .logowrapper
             %img{'ng-src' => "{{current_coffee.maps_url}}"}
         .span6
-          %h4 Average Taste Profile
+          %h4 Taste Profile
           #average_ranking
     .row-fluid
       %p Average Rating: {{current_coffee.average_overall}}/10 ({{current_coffee.rankings.length}} votes)
     .row-fluid
       %p {{current_coffee.description}}
     .row-fluid
-      %p Similar to {{current_coffee.similar_coffee}}
+      %p 
+        Similar to {{current_coffee.similar_coffee.name}} by
+        %a{href: '{{current_coffee.similar_coffee.url}}'} {{current_coffee.similar_coffee.roaster_name}}
   .modal-footer
     %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close

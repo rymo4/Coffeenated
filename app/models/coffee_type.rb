@@ -15,18 +15,6 @@ class CoffeeType
   validate :location, required: true
   validate :name, required: true
 
-  def maps_url
-    map_location = MapLocation.new(:address => location)
-    map = GoogleStaticMap.new(
-      :zoom => 7,
-      :maptype => "hybrid",
-      :center => map_location,
-      :format => "gif"
-    )
-    map.markers << MapMarker.new(:color => "red", :location => map_location)
-    map.url(:auto)
-  end
-
   # Updates old records with expensive computation
   def update_average!
     avg = Hash.new(0)
@@ -45,13 +33,9 @@ class CoffeeType
     avg
   end
 
-
-  def as_json options = {}
-    super.merge(maps_url: maps_url, similar_coffee: most_similar_coffee.name)
-  end
-
-  def average_rating
-    rankings.map(&:overall).inject(&:+) / rankings.count
+  def similar_coffees num = nil
+    matches = CoffeeType.all.sort_by { |c| self.difference(c) }[1..-1]
+    num ? matches.take(num) : matches
   end
 
   def difference other
@@ -64,13 +48,16 @@ class CoffeeType
     diff
   end
 
-  def similar_coffees num = nil
-    matches = CoffeeType.all.sort_by { |c| self.difference(c) }[1..-1]
-    num ? matches.take(num) : matches
-  end
-
-  def most_similar_coffee
-    similar_coffees(1).first
+  def maps_url
+    map_location = MapLocation.new(:address => location)
+    map = GoogleStaticMap.new(
+      :zoom => 7,
+      :maptype => "hybrid",
+      :center => map_location,
+      :format => "gif"
+    )
+    map.markers << MapMarker.new(:color => "red", :location => map_location)
+    map.url(:auto)
   end
 
 end

@@ -22,10 +22,6 @@ class Ranking
   validates :brew_method, presence: true
   validates :coffee_type, presence: true
 
-  def as_json options = {}
-    super(options).merge(:coffee_type => coffee_type.attributes.merge(roaster_name: coffee_type.roaster.name))
-  end
-
   # before_create
   def update_coffee_average
     ranks = coffee_type.num_rankings

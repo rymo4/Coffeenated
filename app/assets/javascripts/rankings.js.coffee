@@ -45,8 +45,8 @@ $(document).ready ->
       _.each $scope.rankings, (ranking) ->
         ranks = _.map(ranking.data, (v,k) -> {label: k, score: v})
         console.log ranks
-        console.log ranking._id
-        client.render_graph("#ranking_#{ranking._id}", ranks, bigRadius: 100)
+        console.log ranking.id
+        client.render_graph("#ranking_#{ranking.id}", ranks, bigRadius: 100)
 
 @RankingCtrlr.$inject = ['$scope', '$http']
 @MyRankingsCtlr.$inject = ['$scope', '$http']

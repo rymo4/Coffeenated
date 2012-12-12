@@ -4,9 +4,9 @@
   %div{'ng-controller' => 'MyRankingsCtlr'}
     .row-fluid{'ng-repeat' => 'group in groups'}
       .span4{'ng-repeat' => 'ranking in group'}
-        .my-rankings{id: "ranking_{{ranking._id}}"}
+        .my-rankings{id: "ranking_{{ranking.id}}"}
         %p.center
-          = link_to '{{ranking.coffee_type.name}} by {{ranking.coffee_type.roaster_name}}', '/rankings/{{ranking._id}}'
+          = link_to '{{ranking.coffee_name}} by {{ranking.roaster_name}}', '/rankings/{{ranking.id}}'
     {{render_graphs()}}
   %br
 

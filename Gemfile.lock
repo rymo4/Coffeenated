@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/rails-api/active_model_serializers.git
+  revision: 6780cd3df5b14d85a7fd032af961853a9eb7c2cf
+  specs:
+    active_model_serializers (0.5.2)
+      activemodel (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -170,6 +177,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers!
   bootstrap-sass (>= 2.1.1.0)
   coffee-rails (~> 3.2.1)
   database_cleaner (>= 0.9.1)

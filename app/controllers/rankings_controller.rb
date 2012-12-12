@@ -4,7 +4,7 @@ class RankingsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @rankings }
+      format.json { render json: @rankings, each_serializer: RankingsIndexSerializer, root: false }
     end
   end
 

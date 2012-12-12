@@ -10,7 +10,7 @@
       = link_to '{{roaster.url}}', '{{roaster.url}}'
       %h4 Top Coffees
       %div{'ng-repeat' => 'top_coffee in top_coffees'}
-        {{top_coffee.name}}
+        %a{"ng-click" => "show_coffee(top_coffee)", "data-toggle" => "modal", :href => "#coffee_modal", :role => "button"} {{top_coffee.name}}
   %hr
   .row-fluid{'ng-repeat' => 'group in coffee_groups'}
     .span4{'ng-repeat' => 'coffee in group'}
@@ -20,6 +20,6 @@
         {{coffee.description.substring(0,300) + "..."}}
       .row-fluid
         %br
-        %a.btn{"ng-click" => "show_coffee(coffee)", "data-toggle" => "modal", :href => "#coffee_{{coffee.id}}", :role => "button"} Details
+        %a.btn{"ng-click" => "show_coffee(coffee)", "data-toggle" => "modal", :href => "#coffee_modal", :role => "button"} Details
   
   = render 'shared/coffee_modal'
