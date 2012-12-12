@@ -1,5 +1,5 @@
 class RoastersCoffeeTypeSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :average_overall, :average_rankings, :maps_url, :location, :similar_coffee
+  attributes :id, :name, :description, :average_overall, :average_rankings, :maps_url, :location, :similar_coffee, :num_rankings
 
   has_one :similar_coffee, key: :similar_coffee, serializer: SimilarCoffeeSerializer
 
