@@ -3,7 +3,6 @@ development:
   sessions:
     # Defines the default session. (required)
     default:
-      uri: <%= ENV['MONGOLAB_URI'] %>
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
       database: coffeenated_development
