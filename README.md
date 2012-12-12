@@ -2,6 +2,8 @@
 
 An open source rails app for reviewing fancy coffee. See it [live](http://coffeenated.herokuapp.com).
 
+![Coffee Modal](https://www.evernote.com/shard/s236/res/852543eb-3ee1-45f4-baf3-e50aa6581e67/Screen%20Shot%202012-12-12%20at%2012.49.22%20AM.png?resizeSmall&width=1092)
+
 ## What I'm Using
 
 | What        | Why        |
